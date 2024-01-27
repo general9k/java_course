@@ -1,7 +1,6 @@
 package ru.rodionov.crudproject.controllers;
 
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,26 +8,30 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.rodionov.crudproject.dao.PersonDAO;
 import ru.rodionov.crudproject.models.Person;
+import ru.rodionov.crudproject.util.PersonValidator;
 
+import javax.validation.Valid;
 
 
 @Controller
-@RequestMapping("/people")
+@RequestMapping(value = "/people")
 public class PeopleController {
     private final PersonDAO personDAO;
+    private final PersonValidator personValidator;
 
     @Autowired
-    public PeopleController(PersonDAO personDAO) {
+    public PeopleController(PersonDAO personDAO, PersonValidator personValidator) {
         this.personDAO = personDAO;
+        this.personValidator = personValidator;
     }
 
-    @GetMapping()
+    @GetMapping(produces = "text/html; charset=utf-8")
     public String index(Model model) {
         model.addAttribute("people", personDAO.index());
         return "people/index";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}")
     public String show(@PathVariable("id") int id,
                        Model model) {
         model.addAttribute("person", personDAO.show(id));
@@ -40,10 +43,12 @@ public class PeopleController {
         return "people/new";
     }
 
-    @PostMapping()
+    @PostMapping(consumes = "application/x-www-form-urlencoded;charset=UTF-8")
     public String create(@ModelAttribute("person") @Valid Person person,
                          BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) return "people/new";
+        personValidator.validate(person, bindingResult);
+        if (bindingResult.hasErrors())
+            return "people/new";
 
         personDAO.save(person);
         return "redirect:/people";
@@ -60,8 +65,8 @@ public class PeopleController {
     public String update(@ModelAttribute("person") @Valid Person person,
                          BindingResult bindingResult,
                          @PathVariable("id") int id) {
+        personValidator.validate(person, bindingResult);
         if (bindingResult.hasErrors()) return "people/edit";
-
         personDAO.update(id, person);
         return "redirect:/people";
     }
