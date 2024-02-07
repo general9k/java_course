@@ -21,15 +21,15 @@
 
 - На основной странице /people высвечиваются все люди, которые присутствуют в БД. Также имеется кнопка "create new person" которая создает пользователя и загружает в БД.
 
-<img src="img/not_hiber_crud1.png" alt="not_hiber_crud1" height="300" />
+<img src="img/not_hiber_crud1.png" alt="not_hiber_crud1" height="240" />
 
 - Страница отображения одного человека. Высвечивается имя, возраст, почта, адресс и айди в БД - все данные берутся из БД с помощью SQL запросов. Присутствует кнопка EDIT и DELETE. Кнопка DELETE передает DELETE запрос к БД на удаление человека.
 
-<img src="img/not_hiber_crud2.png" alt="not_hiber_crud2" height="300" />
+<img src="img/not_hiber_crud2.png" alt="not_hiber_crud2" height="240" />
 
 - Страница редактирования пользователя. Все поля изначально подгрузились из БД. Кнопка Update отправляет PATCH запрос к БД для изменения полей человека.
 
-<img src="img/not_hiber_crud3.png" alt="not_hiber_crud3" height="300" />
+<img src="img/not_hiber_crud3.png" alt="not_hiber_crud3" height="240" />
 
 - Запрос к БД на наличие людей. Все верно, там был один человек.
 
