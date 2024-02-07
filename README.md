@@ -35,4 +35,34 @@
 
 <img src="img/not_hiber_crud4.png" alt="not_hiber_crud4" width="65%" height="65%" />
 
+#### - FirstSecurityApp - учебная практика. Создание приложения со Spring MVC и Spring Security, БД - PostgreSQL. Есть 2 пользователя: обычный, админ. Обычный пользователь не может зайти на страницу /admin, то есть на страницу админа.
+
+- Поле входа для пользователя. Человек сможет зайти на страницу /hello и остальные страницы, только когда он есть в БД. Незарегистрированные пользователи должны перейти на /auth/registation и зарегистрироваться, чтобы потом аутентифицироваться. 
+
+<img src="img/first_security1.png" alt="first_security1" width="65%" height="65%" />
+
+- Проба неправильного ввода имени / пароля.
+
+<img src="img/first_security2.png" alt="first_security2" width="65%" height="65%" />
+
+- Зашли на страницу /hello как аутентифицировались.
+
+<img src="img/first_security3.png" alt="first_security3" width="65%" height="65%" />
+
+- Страница регистрации пользователя.
+
+<img src="img/first_security4.png" alt="first_security4" width="65%" height="65%" />
+
+- Все поля валидированы.
+
+<img src="img/first_security5.png" alt="first_security5" width="65%" height="65%" />
+
+- Страница админа. Доступна только пользователям с ролью ADMIN. 
+
+<img src="img/first_security6.png" alt="first_security6" width="65%" height="65%" />
+
+- Пароль в БД зашифрован.
+
+<img src="img/first_security7.png" alt="first_security7" width="65%" height="65%" />
+
 
